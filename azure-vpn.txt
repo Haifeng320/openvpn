@@ -1,0 +1,33 @@
+create a ubuntu 18 vm at azure
+ssh azurehf@40.117.130.82
+sudo apt update
+sudo apt install openvpn
+
+sudo apt install git
+git clone https://github.com/Haifeng320/openvpn.git
+
+cd openvpn
+sudo mv openvpn.tgz /etc
+cd /etc
+sudo tar -xvf openvpn.tgz
+sudo  su
+cd /etc/openvpn/server
+cat server20.conf  :find out the port  10039
+
+$sudo nano /etc/sysctl.conf
+
+remove # at 
+net.ipv4.ip_forward=1
+
+to read the file and adjust the valuse for the current session type:
+$sudo sysctl -p
+
+#systemctl start openvpn-server@server20   //start the server
+
+#systemctl status openvpn-server@server20  //check status
+
+#systemctl enable openvpn-server@server20 //enable it it will start auto
+
+
+
+sudo su to get the root
